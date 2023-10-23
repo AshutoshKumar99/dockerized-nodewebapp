@@ -6,6 +6,7 @@ COPY app.js .
 #Installing some dependecy(Express)
 #This will install your project’s npm dependencies – Express in this case – within the container’s filesystem
 RUN npm install express
+EXPOSE 3000
 #Running default cmd app.js when container starts
 CMD ["app.js"] 
 
