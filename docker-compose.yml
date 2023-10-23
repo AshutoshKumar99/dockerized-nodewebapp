@@ -1,0 +1,29 @@
+version: '3'
+services:
+  # Define a service named 'web' for your web application
+  web:
+    build: .
+    # Build context is set to the current directory where the Dockerfile is located
+    ports:
+      - "3000:3000"
+      # Map port 3000 on the host to port 3000 in the container
+    container_name: my-web-app
+    # Set a custom container name
+
+  # Define a service named 'db' for your MySQL database
+  db:
+    image: "mysql"
+    # Use the official MySQL image from Docker Hub
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      # Set the MySQL root password as an environment variable
+    volumes:
+      - db-data:/foo
+      # Mount a volume named 'db-data' to '/foo' in the container
+    container_name: my-mysql-db
+    # Set a custom container name
+
+# Define a named volume 'db-data' for persistent storage
+volumes:
+  db-data:
+    # You can use this volume to persist data used by the 'db' service
